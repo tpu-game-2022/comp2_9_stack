@@ -6,8 +6,7 @@
 
 
 // mem_size の容量でスタック用のメモリを確保する
-void initialize(STACK* s, size_t mem_size)
-{
+void initialize(STACK* s, size_t mem_size) {
 	if (s == NULL) return;
 
 	// ToDo: mem_sizeでメモリを確保しよう
@@ -24,23 +23,18 @@ void initialize(STACK* s, size_t mem_size)
 
 
 // 確保したメモリを解放する
-void finalize(STACK* s)
-{
+void finalize(STACK* s) {
 	// ToDo: Initializeで確保したメモリを解放しよう
 	if (s) {
 		if (s->stack_pointer) free(s->stack_memory);
 		s->stack_pointer = 0;
 		s->end = 0;
 	}
-	
-	
-	
 }
 
 
 // valの値をスタックに積む。実行の成否を返す
-bool push(STACK* s, int val)
-{
+bool push(STACK* s, int val) {
 	// ToDo: valの値をスタックに保存しよう
 	if (s == NULL || s->stack_pointer >= s->end) return false;
 	
@@ -64,24 +58,20 @@ bool push_array(STACK* s, int* addr, int num)
 }
 
 // スタックから一つの要素を取り出す
-int pop(STACK* s)
-{
+int pop(STACK* s) {
 	// ToDo: スタックの最上位の値を取り出して返そう
 	// 不具合時は0を返す
 	if (s == NULL || s->stack_pointer < 1) return 0;
 	s->stack_pointer--;
-	
 	return s->stack_memory[s->stack_pointer];
 }
 
 // addrにスタックからnumの要素を取り出す。取り出せた個数を返す
-int pop_array(STACK* s, int* addr, int num)
-{
+int pop_array(STACK* s, int* addr, int num) {
 	// ToDo: スタックからnum個の値を取り出してaddrから始まるメモリに保存しよう
 	// スタックにnum個の要素がたまっていなかったら、積まれている要素を返して、
 	// 積んだ要素数を返り値として返そう
 	if (s == NULL || num < 1) return 0;
-	
 	int index = 0;
 	while(s->stack_pointer > 0 && index<num) {
 		*(addr+index) = 0;
