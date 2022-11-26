@@ -89,7 +89,7 @@ namespace UnitTest
 			STACK s;
 			initialize(&s, sizeof(int) * 2);
 
-			Assert::IsTrue(push(&s, 31), _T("14を積むのに成功する"));
+			Assert::IsTrue(push(&s, 31), _T("を積むのに成功する"));
 			int a[2] = { -1, -2 };
 			Assert::IsFalse(push_array(&s, a, 2), _T("2要素を積むのに失敗する"));
 			Assert::IsTrue(push(&s, 37), _T("37を積むのに成功する"));
